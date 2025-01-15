@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Bugle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="mainTitle">Welcome to the Daily Bugle</h1>
+        <div id="loginSection">
+            <form id="loginForm">
+                <input type="text" id="loginUsername" placeholder="Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+        <div id="registerSection">
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <select id="registerRole">
+                    <option value="reader">Reader</option>
+                    <option value="author">Author</option>
+                </select>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div id="logoutSection" style="display: none;">
+            <button id="logoutButton">Log Out</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="headlineStory">
+            <h2 id="storyTitle">Headline Story</h2>
+            <p id="storyBody"></p>
+            <p><strong>Author:</strong> <span id="storyAuthor"></span></p>
+            <p><strong>Created:</strong> <span id="storyCreated"></span></p>
+            <p><strong>Edited:</strong> <span id="storyEdited"></span></p>
+            <img id="adImage" alt="Advertisement">
+        </section>
+
+        <section id="readerView" style="display: none;">
+            <input type="hidden" id="currentStoryId" value="">
+            <button id="toggleComments">Show Comments</button>
+            <div id="commentsContainer"></div>
+            <textarea id="newCommentText" placeholder="Write a comment..."></textarea>
+            <button id="submitComment">Submit Comment</button>
+        </section>
+
+        <section id="authorView" style="display: none;">
+            <input type="hidden" id="currentStoryId" value="">
+            <button id="createStory">Create New Story</button>
+            <textarea id="newStoryTitle" placeholder="Story Title"></textarea>
+            <textarea id="newStoryBody" placeholder="Story Body"></textarea>
+        </section>
+
+        <section id="storyNavigation">
+            <button id="previousStory" style="display: none;">Previous</button>
+            <button id="nextStory" style="display: none;">Next</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Daily Bugle. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  user_service:
+    build:
+      context: ./user_service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    env_file:
+      - ./user_service/.env
+    networks:
+      - daily_bugle_network
+
+  story_service:
+    build:
+      context: ./story_service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongo
+    env_file:
+      - ./story_service/.env
+    networks:
+      - daily_bugle_network
+  
+  comment_service:
+    build:
+      context: ./comment_service
+    ports:
+      - "3003:3003"
+    depends_on:
+      - mongo
+    env_file:
+      - ./comment_service/.env
+    networks:
+      - daily_bugle_network
+
+  ad_service:
+    build:
+      context: ./ad_service
+    ports:
+      - "3004:3004"
+    depends_on:
+      - mongo
+    env_file:
+      - ./ad_service/.env
+    networks:
+      - daily_bugle_network
+
+  frontend:
+    build:
+      context: ./front
+    ports:
+      - "8080:80"
+    networks:
+      - daily_bugle_network
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - daily_bugle_network
+
+networks:
+  daily_bugle_network:
+    driver: bridge
+
+volumes:
+  mongo-data:
